@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_65355b889a644215845c71154ccd929d }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_7ef332a864a94720acab5eb3ae67b1f1 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_4052742f83644b4599662395143d03b0 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_e556cd2a80174e51a42ae33cea3cf8ec }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_65355b889a644215845c71154ccd929d }}/appsvc/staticsite:${{ github.sha }}
+        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_4052742f83644b4599662395143d03b0 }}/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'odoo-community-at'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_0d4fc335307a48ffa833553c589d1cd7 }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_65355b889a644215845c71154ccd929d }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_252373b02a7b4796b6fae723dd2075b9 }}
+        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_4052742f83644b4599662395143d03b0 }}/appsvc/staticsite:${{ github.sha }}'
